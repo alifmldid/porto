@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alif Mauludi's Portofolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #363062, #435585, #818FB4, #F5E8C7);
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            animation: gradientAnimation 15s ease infinite;
+            color: #d2deff;
+            text-shadow: 2px 2px 4px #384d89;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .slideshow-container {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            flex: 1;
+            text-align: center;
+        }
+
+        .slide img {
+            margin-top: -30px;
+            max-width: 100%;
+            max-height: 70vh;
+            height: auto;
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-content .slide-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .text-content .slide-description {
+            margin-top: -30px;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .navigation button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .title-container {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+        }
+
+        .title-container .slide-title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="title-container">
+            <div class="slide-title" id="global-title">Judul Gambar</div>
+        </div>
+
+        <div class="slide" id="slide1">
+            <img src="./img/1.png" alt="Image 1">
+            <div class="text-content">
+                <div class="slide-description">
+                    Tech Stack: Codeigniter, MySQL<br><br>
+                    In this project, I played a role in helping users feel comfortable in carrying out their obligations to report a list 
+                    of drug production and distribution activities by fixing bugs based on their reports, adding new features according 
+                    to stakeholder requests, and helping stakeholders in socializing these new features.
+                </div>
+            </div>
+        </div>
+        <div class="slide" id="slide2">
+            <img src="./img/2.png" alt="Image 2">
+            <div class="text-content">
+                <div class="slide-description">
+                    Tech Stack: Golang, NuxtJS, MySQL<br><br>
+                    In this project, I played a role in assisting stakeholders in developing products used by users in BRI branches by 
+                    developing a Task Management module that is closely related to the module that has been developed. The features of 
+                    this module include creating tasks, reports, and jobs to check tasks that have been carried out.                    
+                </div>
+            </div>
+        </div>
+        <div class="slide" id="slide3">
+            <img src="./img/3.png" alt="Image 3">
+            <div class="text-content">
+                <div class="slide-description">
+                    Tech Stack: Golang, SQLServer<br><br>
+                    In this project, I am responsible for the reliability of the BRI DPLK API used by BRI DPLK channels such as BRImo, 
+                    Qlola, and others. The API that I created includes several features, namely transaction transfer reports, customer 
+                    portfolio data, pension guarantee claims, package switching, and several other features.                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button onclick="showSlide(-1)">
+            <img src="https://img.icons8.com/ios-filled/50/d2deff/chevron-left.png" alt="Previous">
+        </button>
+        <button onclick="showSlide(1)">
+            <img src="https://img.icons8.com/ios-filled/50/d2deff/chevron-right.png" alt="Next">
+        </button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const titleContainer = document.getElementById('global-title');
+
+        const titles = [
+            "e-Pengawasan Obat (e-was.pom.go.id)",
+            "BRI OPRA 4.0 (rrm.bri.co.id)",
+            "DPLK BRI (API Channel)"
+        ];
+
+        function showSlide(direction) {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'flex';
+            titleContainer.textContent = titles[currentSlide];
+        }
+
+        // Initialize the slideshow
+        slides[currentSlide].style.display = 'flex';
+        titleContainer.textContent = titles[currentSlide];
+    </script>
+</body>
+</html>
